@@ -1,0 +1,79 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "universidade sena",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "HelloWorldIntent",
+          "slots": [],
+          "samples": [
+            "olá",
+            "como vai você",
+            "diga oi mundo",
+            "diga oi",
+            "oi",
+            "diga olá mundo",
+            "diga olá"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "HorarioCoordenadorIntent",
+          "slots": [],
+          "samples": [
+            "horário do coordenador"
+          ]
+        },
+        {
+          "name": "AulaDeHojeIntent",
+          "slots": [],
+          "samples": [
+            "aulas de hoje",
+            "aula de hoje"
+          ]
+        },
+        {
+          "name": "AulaDeOntemIntent",
+          "slots": [],
+          "samples": [
+            "aula de ontem",
+            "aulas de ontem"
+          ]
+        },
+        {
+          "name": "NotasIntent",
+          "slots": [],
+          "samples": [
+            "nota de orientação a objetos",
+            "nota do módulo de orientação a objetos"
+          ]
+        },
+        {
+          "name": "AulaDeAmanhaIntent",
+          "slots": [],
+          "samples": [
+            "aula de amanhã",
+            "aulas de amanhã"
+          ]
+        }
+      ],
+      "types": []
+    }
+  },
+  "version": "15"
+}
