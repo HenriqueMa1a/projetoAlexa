@@ -40,19 +40,22 @@
           ]
         },
         {
-          "name": "AulaDeHojeIntent",
-          "slots": [],
+          "name": "AulaIntent",
+          "slots": [
+            {
+              "name": "diaSemana",
+              "type": "AMAZON.FictionalCharacter"
+            }
+          ],
           "samples": [
-            "aulas de hoje",
-            "aula de hoje"
-          ]
-        },
-        {
-          "name": "AulaDeOntemIntent",
-          "slots": [],
-          "samples": [
-            "aula de ontem",
-            "aulas de ontem"
+            "quais foram as aulas de {diaSemana}",
+            "{diaSemana} tive que aula",
+            "Quais são as aulas de {diaSemana}",
+            "{diaSemana} tive aula de que",
+            "Qual foi a aula de {diaSemana}",
+            "Que aulas eu tive {diaSemana}",
+            "{diaSemana} eu tive aula de que",
+            "Aulas de {diaSemana}"
           ]
         },
         {
@@ -62,18 +65,10 @@
             "nota de orientação a objetos",
             "nota do módulo de orientação a objetos"
           ]
-        },
-        {
-          "name": "AulaDeAmanhaIntent",
-          "slots": [],
-          "samples": [
-            "aula de amanhã",
-            "aulas de amanhã"
-          ]
         }
       ],
       "types": []
     }
   },
-  "version": "15"
+  "version": "20"
 }
