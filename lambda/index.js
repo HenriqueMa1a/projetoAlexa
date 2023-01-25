@@ -29,10 +29,11 @@ const HelloWorldIntentHandler = {
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .reprompt()
             .getResponse();
     }
 };
+
 
 
 const AulaIntentHandler = {
@@ -49,50 +50,65 @@ const AulaIntentHandler = {
         .diaSemana
         .value;
         
-        let speakOutput;
         
-        switch (parDiaDaSemana){
-            case 'ontem': speakOutput = 'ontem, foi aula de infraestrutura e redes';
-            break
-            case 'hoje': speakOutput = 'Hoje, é aula de álgebra linear';
-            break
-            case 'amanhã': speakOutput = 'amanhã, será aula de matrizes e de vetores';
-            break
-            case 'segunda': speakOutput = 'você tem aula de estatística e de probabilidade';
-            break
-            case 'segunda-feira': speakOutput = 'você tem aula de estatística e de probabilidade';
-            break
-            case 'terça': speakOutput = 'você tem aula de gestão de projetos';
-            break
-            case 'terça-feira': speakOutput = 'você tem aula de gestão de projetos';
-            break
-            case 'quarta': speakOutput = 'você tem aula de orientação a ojetos';
-            break
-            case 'quarta-feira': speakOutput = 'Você não tem aula neste dia';
-            break
-            case 'quinta': speakOutput = 'Você não tem aula neste dia';
-            break
-            case 'quinta-feira': speakOutput = 'Você não tem aula neste dia';
-            break
-            case 'sexta': speakOutput = 'você tem aula de filosofi';
-            break
-            case 'sexta-feira': speakOutput = 'você tem aula de filosofia';
-            break
-            case 'sábado': speakOutput = 'você tem aula de geografia e de história';
-            break
-            case 'Domingo': speakOutput = 'Você não tem aula neste dia';
-            break
+        let speakOutput = 'Não entendi. Pode repetir?';
+        
+        
             
+       switch (parDiaDaSemana){
+            case 'ontem': 
+                speakOutput = 'ontem, foi aula de infraestrutura e redes';
+            break;
+            
+            case 'hoje': 
+                speakOutput = 'Hoje, é aula de álgebra linear';
+            break;
+            
+            case 'amanhã': 
+                speakOutput = 'amanhã, será aula de matrizes e de vetores';
+            break;
+        
+            case '2.ª feira':
+            case '2ª': 
+                speakOutput = 'você tem aula de estatística e de probabilidade';
+            break;
+            
+            case 'terça':
+            case 'terça-feira':
+            case '3.ª feira':
+            case '3ª':
+                speakOutput = 'você tem aula de gestão de projetos';
+            break;
+            
+            case '4.ª feira':
+            case '4ª':
+                speakOutput = 'você tem aula de orientação a ojetos';
+            break;
+
+            case '5.ª feira':
+            case '5ª':
+                speakOutput = 'Você não tem aula neste dia';
+            break;
+            
+            case '6ª':
+            case '6.ª feira':
+            case '6.ª':
+                speakOutput = 'você tem aula de filosofia';
+            break;
+            
+            case 'sábado': 
+                speakOutput = 'você tem aula de geografia e de história';
+            break;
+            case 'domingo': 
+                speakOutput = 'Você não tem aula neste dia';
+            break;
         }
         
-        
+    return handlerInput.responseBuilder.speak(speakOutput).reprompt().getResponse();
 
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            .reprompt()
-            .getResponse();
-    }
+  }
 };
+
 
 
 

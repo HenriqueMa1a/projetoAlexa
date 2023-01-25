@@ -44,10 +44,12 @@
           "slots": [
             {
               "name": "diaSemana",
-              "type": "AMAZON.FictionalCharacter"
+              "type": "AMAZON.SearchQuery"
             }
           ],
           "samples": [
+            "aulas {diaSemana}",
+            "aula {diaSemana}",
             "quais foram as aulas de {diaSemana}",
             "{diaSemana} tive que aula",
             "Quais são as aulas de {diaSemana}",
@@ -70,5 +72,5 @@
       "types": []
     }
   },
-  "version": "20"
+  "version": "23"
 }
