@@ -18,7 +18,7 @@ const LaunchRequestHandler = {
             .getResponse();
     }
 };
-
+Math.random()
 const HelloWorldIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
