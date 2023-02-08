@@ -5,6 +5,9 @@
  * */
 const Alexa = require('ask-sdk-core');
 
+const tela = require('./tela.js')
+
+
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
@@ -18,7 +21,7 @@ const LaunchRequestHandler = {
             .getResponse();
     }
 };
-Math.random()
+
 const HelloWorldIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -35,11 +38,82 @@ const HelloWorldIntentHandler = {
 };
 
 
-
-const AulaIntentHandler = {
+const AulaPastIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AulaIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AulaPastIntent';
+    },
+    handle(handlerInput) {
+        const parDiaDaSemana = handlerInput
+        .requestEnvelope
+        .request
+        .intent
+        .slots
+        .diaPastSemana
+        .value;
+        
+        
+        let speakOutput = 'Não entendi. Pode repetir?';
+        
+        
+            
+       switch (parDiaDaSemana){
+            case 'ontem': 
+                speakOutput = 'ontem, você teve aula de infraestrutura e redes';
+                tela.teste(handlerInput);        
+                   
+            break;
+            
+            case 'hoje': 
+                speakOutput = 'Hoje, você teve aula de álgebra linear';
+            break;
+        
+            case '2.ª feira':
+            case '2ª': 
+                speakOutput = 'você teve aula de estatística e de probabilidade';
+            break;
+            
+            case 'terça':
+            case 'terça-feira':
+            case '3.ª feira':
+            case '3ª':
+                speakOutput = 'você teve aula de gestão de projetos';
+            break;
+            
+            case '4.ª feira':
+            case '4ª':
+                speakOutput = 'você teve aula de orientação a ojetos';
+            break;
+
+            case '5.ª feira':
+            case '5ª':
+                speakOutput = 'Você não teve aula neste dia';
+            break;
+            
+            case '6ª':
+            case '6.ª feira':
+            case '6.ª':
+                speakOutput = 'você teve aula de filosofia';
+            break;
+            
+            case 'sábado': 
+                speakOutput = 'você teve aula de geografia e de história';
+            break;
+            case 'domingo': 
+                speakOutput = 'Você não teve aula neste dia';
+            break;
+        }
+        
+    return handlerInput.responseBuilder.speak(speakOutput).reprompt().getResponse();
+
+  }
+};
+
+
+const AulaFutureIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AulaFutureIntent';
     },
     handle(handlerInput) {
         const parDiaDaSemana = handlerInput
@@ -56,12 +130,9 @@ const AulaIntentHandler = {
         
             
        switch (parDiaDaSemana){
-            case 'ontem': 
-                speakOutput = 'ontem, foi aula de infraestrutura e redes';
-            break;
             
             case 'hoje': 
-                speakOutput = 'Hoje, é aula de álgebra linear';
+                speakOutput = 'Hoje, você terá aula de álgebra linear';
             break;
             
             case 'amanhã': 
@@ -70,37 +141,37 @@ const AulaIntentHandler = {
         
             case '2.ª feira':
             case '2ª': 
-                speakOutput = 'você tem aula de estatística e de probabilidade';
+                speakOutput = 'Você terá aula de estatística e de probabilidade';
             break;
             
             case 'terça':
             case 'terça-feira':
             case '3.ª feira':
             case '3ª':
-                speakOutput = 'você tem aula de gestão de projetos';
+                speakOutput = 'Você terá aula de gestão de projetos';
             break;
             
             case '4.ª feira':
             case '4ª':
-                speakOutput = 'você tem aula de orientação a ojetos';
+                speakOutput = 'Você terá aula de orientação a ojetos';
             break;
 
             case '5.ª feira':
             case '5ª':
-                speakOutput = 'Você não tem aula neste dia';
+                speakOutput = 'Você não terá aula neste dia';
             break;
             
             case '6ª':
             case '6.ª feira':
             case '6.ª':
-                speakOutput = 'você tem aula de filosofia';
+                speakOutput = 'Você terá aula de filosofia';
             break;
             
             case 'sábado': 
-                speakOutput = 'você tem aula de geografia e de história';
+                speakOutput = 'Você terá aula de geografia e de história';
             break;
             case 'domingo': 
-                speakOutput = 'Você não tem aula neste dia';
+                speakOutput = 'Você não terá aula neste dia';
             break;
         }
         
@@ -118,7 +189,7 @@ const NotasIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'NotasIntent';
 },
     handle(handlerInput) {
-        const speakOutput = `A sua nota do módulo de Orientação a Objetos foi de 10. Meus parabéns pelo seu empenho, tenho muito orgulho de você`;
+        const speakOutput = `Você tirou 9.3 na AC, e 9.1 na AI. Portanto a sua média semestral ficou 9.2`;
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -135,7 +206,7 @@ const HorarioCoordenadorIntentHandler = {
         const speakOutput = 'Seu coordenador está disponível de segunda a quinta, a partir das 15:00 horas na unidade Maracanã';
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            //.reprompt()
+            .reprompt()
             .getResponse();
     }
 };
@@ -253,7 +324,8 @@ exports.handler = Alexa.SkillBuilders.custom()
         LaunchRequestHandler,
         HelloWorldIntentHandler,
         HelpIntentHandler,
-        AulaIntentHandler,
+        AulaFutureIntentHandler,
+        AulaPastIntentHandler,
         NotasIntentHandler,
         HorarioCoordenadorIntentHandler,
         CancelAndStopIntentHandler,

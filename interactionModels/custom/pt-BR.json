@@ -101,7 +101,7 @@
           ]
         },
         {
-          "name": "AulaIntent",
+          "name": "AulaFutureIntent",
           "slots": [
             {
               "name": "diaSemana",
@@ -168,10 +168,51 @@
             "nota",
             "notas"
           ]
+        },
+        {
+          "name": "AulaPastIntent",
+          "slots": [
+            {
+              "name": "diaPastSemana",
+              "type": "AMAZON.DayOfWeek"
+            }
+          ],
+          "samples": [
+            "que aula eu tive {diaPastSemana}",
+            "que aulas eu tive {diaPastSemana}",
+            "quais aulas eu tive {diaPastSemana}",
+            "que aula tive {diaPastSemana}",
+            "que aulas tive na {diaPastSemana}",
+            "que aulas tive {diaPastSemana}",
+            "que aula tive no {diaPastSemana}",
+            "quais aulas tive {diaPastSemana}",
+            "quais aulas tive no {diaPastSemana}",
+            "aula que tive {diaPastSemana}",
+            "quais aulas que tive {diaPastSemana}",
+            "aulas que tive no {diaPastSemana}",
+            "aula  que tive no {diaPastSemana}",
+            "aula que eu tive na {diaPastSemana} passada",
+            "aula que tive no {diaPastSemana} passado",
+            "que aulas tive {diaPastSemana} passada",
+            "quais aulas tive {diaPastSemana} passada ",
+            "que aulas tive {diaPastSemana} passado",
+            "que aula tive {diaPastSemana} passado",
+            "quais aulas tive {diaPastSemana} passado",
+            "{diaPastSemana} tive aula de que ",
+            "{diaPastSemana} tive que aula ",
+            "{diaPastSemana} tive quais aulas ",
+            "{diaPastSemana} tive que aulas ",
+            "{diaPastSemana} tive aulas de que ",
+            "{diaPastSemana} quais aulas eu tive ",
+            "{diaPastSemana} que aulas eu tive",
+            "{diaPastSemana} que aula tive ",
+            "{diaPastSemana} que aulas tive ",
+            "{diaPastSemana} quais aulas tive "
+          ]
         }
       ],
       "types": []
     }
   },
-  "version": "23"
+  "version": "34"
 }
