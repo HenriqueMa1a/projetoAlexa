@@ -5,8 +5,9 @@
  * */
 const Alexa = require('ask-sdk-core');
 
-const tela = require('./tela.js')
-
+const telaAula = require('./telaAula.js');
+const nota = require('./telaNotas.js')
+const telaCoordenador = require('./telaCoordenador');
 
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
@@ -60,17 +61,19 @@ const AulaPastIntentHandler = {
        switch (parDiaDaSemana){
             case 'ontem': 
                 speakOutput = 'ontem, você teve aula de infraestrutura e redes';
-                tela.teste(handlerInput);        
+                telaAula.telaAula(handlerInput);        
                    
             break;
             
             case 'hoje': 
                 speakOutput = 'Hoje, você teve aula de álgebra linear';
+                telaAula.telaAula(handlerInput);
             break;
         
             case '2.ª feira':
             case '2ª': 
                 speakOutput = 'você teve aula de estatística e de probabilidade';
+                telaAula.telaAula(handlerInput);
             break;
             
             case 'terça':
@@ -78,29 +81,35 @@ const AulaPastIntentHandler = {
             case '3.ª feira':
             case '3ª':
                 speakOutput = 'você teve aula de gestão de projetos';
+                telaAula.telaAula(handlerInput);
             break;
             
             case '4.ª feira':
             case '4ª':
                 speakOutput = 'você teve aula de orientação a ojetos';
+                telaAula.telaAula(handlerInput);
             break;
 
             case '5.ª feira':
             case '5ª':
                 speakOutput = 'Você não teve aula neste dia';
+                telaAula.telaAula(handlerInput);
             break;
             
             case '6ª':
             case '6.ª feira':
             case '6.ª':
                 speakOutput = 'você teve aula de filosofia';
+                telaAula.telaAula(handlerInput);
             break;
             
             case 'sábado': 
                 speakOutput = 'você teve aula de geografia e de história';
+                telaAula.telaAula(handlerInput);
             break;
             case 'domingo': 
                 speakOutput = 'Você não teve aula neste dia';
+                telaAula.telaAula(handlerInput);
             break;
         }
         
@@ -133,15 +142,18 @@ const AulaFutureIntentHandler = {
             
             case 'hoje': 
                 speakOutput = 'Hoje, você terá aula de álgebra linear';
+                telaAula.telaAula(handlerInput);
             break;
             
             case 'amanhã': 
                 speakOutput = 'amanhã, será aula de matrizes e de vetores';
+                telaAula.telaAula(handlerInput);
             break;
         
             case '2.ª feira':
             case '2ª': 
                 speakOutput = 'Você terá aula de estatística e de probabilidade';
+                telaAula.telaAula(handlerInput);
             break;
             
             case 'terça':
@@ -149,29 +161,35 @@ const AulaFutureIntentHandler = {
             case '3.ª feira':
             case '3ª':
                 speakOutput = 'Você terá aula de gestão de projetos';
+                telaAula.telaAula(handlerInput);
             break;
             
             case '4.ª feira':
             case '4ª':
                 speakOutput = 'Você terá aula de orientação a ojetos';
+                telaAula.telaAula(handlerInput);
             break;
 
             case '5.ª feira':
             case '5ª':
                 speakOutput = 'Você não terá aula neste dia';
+                telaAula.telaAula(handlerInput);
             break;
             
             case '6ª':
             case '6.ª feira':
             case '6.ª':
                 speakOutput = 'Você terá aula de filosofia';
+                telaAula.telaAula(handlerInput);
             break;
             
             case 'sábado': 
                 speakOutput = 'Você terá aula de geografia e de história';
+                telaAula.telaAula(handlerInput);
             break;
             case 'domingo': 
                 speakOutput = 'Você não terá aula neste dia';
+                telaAula.telaAula(handlerInput);
             break;
         }
         
@@ -190,6 +208,7 @@ const NotasIntentHandler = {
 },
     handle(handlerInput) {
         const speakOutput = `Você tirou 9.3 na AC, e 9.1 na AI. Portanto a sua média semestral ficou 9.2`;
+        nota.telaNotas(handlerInput)
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -203,7 +222,8 @@ const HorarioCoordenadorIntentHandler = {
         && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HorarioCoordenadorIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Seu coordenador está disponível de segunda a quinta, a partir das 15:00 horas na unidade Maracanã';
+        const speakOutput = 'Seu coordenador está disponível de segunda a sexta, das 14:30h às 18:30h na unidade Maracanã';
+        telaCoordenador.telaCord(handlerInput);
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt()
